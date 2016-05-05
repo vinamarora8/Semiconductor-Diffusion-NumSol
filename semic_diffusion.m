@@ -1,20 +1,16 @@
-(* ::Package:: *)
-
-tmax = 10^-14;
-delX = 5*10^-10;
-rangeX = 5*10^-7;
-
 % The value at which one wants to calculate excess charge career
 % concentration.
-tmax = 10^-12;
+tmax = 10^-15;
 
 % The infinitesimally small time element.
-delT = tmax/10000;
-
-Dp = 1.2432*10^-3;
+if tmax > 10^-13
+    delT = 10^-16;
+else
+    delT = tmax/1000;
+end
 
 % Range of width axis.
-rangeX = 5*10^-6;
+rangeX = 5*10^-8;
 
 % The infinitesimally small width element.
 delX = 5*10^-10;
@@ -39,11 +35,11 @@ p(1 + int16(elements/2)) = 10^20;
 
 % temporary array to store the career concentration at t+deltat.
 temp = zeros(1, 2 + elements);
-x = [-int16(elements/2):1:1+int16(elements/2)];
+
 
 
 % Width axis array.
-x = [1:1:2 + elements];
+x = [-int16(elements/2):1:1+int16(elements/2)];
 
 % Number of blocks created on the time axis.
 iterations = tmax/delT;
